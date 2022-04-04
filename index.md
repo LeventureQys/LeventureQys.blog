@@ -9,7 +9,7 @@
 
   文学类:[ 轩先生的一场梦 ](./pages/Lecture.html)
 
-  技术类:[ 轩先生的工具箱 ](https://leventureqys.github.io/Leventure_Tech/)
+  技术类:[ 轩先生的工具箱 ](./pages/Tech.html)
 
 一些见闻:[ 轩先生的日记本 ](https://leventureqys.github.io/Leventure_diary/)
 
