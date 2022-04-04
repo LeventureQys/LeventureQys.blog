@@ -1,6 +1,7 @@
-## Welcome to GitHub Pages
+## 随便写写日常会遇到的坑
+C#,Qt,C++,python相关，之后也许会写一些和算法有关的内容，html是真的不懂，这个页面也是暂时用下，等工作稳定了之后这些都会改
 
-You can use the [editor on GitHub](https://github.com/LeventureQys/LeventureQys.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+这辈子第一次入职，第一个月学了不少东西，同时也踩了不少的坑，在这里我会记录一些别人问到的问题，和碰到的坑，没事干还会写一些文章，和一些所见所闻
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
