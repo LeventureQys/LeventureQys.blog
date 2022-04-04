@@ -7,7 +7,7 @@
 
 # 页面导航：
 
-  文学类:[ 轩先生的一场梦 ](https://leventureqys.github.io/Leventure_Lecture/)
+  文学类:[ 轩先生的一场梦 ](./pages/Lecture.md)
 
   技术类:[ 轩先生的工具箱 ](https://leventureqys.github.io/Leventure_Tech/)
 
