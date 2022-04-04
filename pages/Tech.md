@@ -6,6 +6,8 @@
 
 会者不难✋✋✋
 
+原博:[轩先生大冒险](https://leventureqys.github.io/)
+
 ## 2022.4.4
 
 ### 无法打开源文件stdafx.h报错？
