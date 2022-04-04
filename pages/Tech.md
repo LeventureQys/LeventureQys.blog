@@ -8,6 +8,36 @@
 
 ## 2022.4.4
 
+### TCP通信的三次握手
+
+以我这里的NetServer_Qt.dll为例，展示TCP通信的三次握手
+#### （0）NetMessage_Server_UDP|Ready|MacAddressList
+#### （1）NetMessage_Server_UDP|Connect|ServerIP|ServerPort|MacAddress|RoomID|SeatID
+#### （2）NetMessage_Server_TCP|Ready
+#### （3）NetMessage_Client_UDP|Ready|MacAddress
+#### （4）NetMessage_Client_TCP|Ready|ClientID|MacAddress
+#### （5）NetMessage_Server_TCP|End
+#### （6）NetMessage_Server_UDP|End
+#### （7）NetMessage_Client_UDP|Abnormal|ClientID|MacAddress
+#### （8）NetMessage_Server_UDP|Reconnect|ClientID
+#### （9）NetMessage_Client_TCP|Reconnect|ClientID|MacAddress
+
+Server端消息处理：
+1.启动时发送 消息码（0）；每隔一段时间，检测存在未成功连接的客户端，发送 消息码（0）
+2.接收到 消息码（3） 时，发送消息码（1）
+3.接收到 消息码（4）或（9） 时，发送消息码（2），代表可进行TCP和UDP通信
+4.退出时发送 消息码（5）和（6）
+
+Client端消息处理：
+1.启动时发送 消息码（3），每隔5秒发送一次
+2.接收到 消息码（0）时，包含自己的MAC地址，发送 消息码（3）
+3.接收到 消息码（1） 时，进行连接
+4.连接成功时，发送 消息码（4）或（9）
+5.接收到 消息码（2） 时，代表可进行TCP和UDP通信
+6.接收到 消息码（5）或（6），断开连接，恢复初始化状态，每隔5秒发送 消息码（3）
+ 
+
+
 ### 制作和调用dll
 
 #### Part 1 : 制作dll?
