@@ -3,3 +3,12 @@ title: 轩先生大冒险
 description:  一个有点菜的轮子发明家
 logo : /asset/elieen.jpg
 
+comments:
+  gitalk: ture
+  clientID: 6d4c42bc436cda0269f3
+  secret: c2035d6e32a0499f95025ec798d357984d6d7a08
+  repo: LeventureQys.github.io
+  owner: LeventureQys
+  admin: LeventureQys
+  distractionFreeMode: true
+  
