@@ -8,7 +8,68 @@
 
 原博:[轩先生大冒险](https://leventureqys.github.io/)
 
+
+
+
 ## 2022.4.5
+
+### dataset的使用
+
+#### 从数据库中提取一个dataset
+
+我们常会在c#中操作dataset来取数据库中的成员，我们希望让数据库成员以一个图表的形式绑定成一体，然后再从中取出我们需要的一些数据，那么我们该如何操作呢？
+
+举个例子，我这里写了个从数据库中取出一个dataset的例子：
+
+        public DataSet GetSqlDataset(string sql) //返回一个dataset，用于静态处理数据库，通常用于单纯的查询，这个字符串sql就是我们需要查询的对象
+        
+        {
+        
+        public MySqlConnection connection = new MySqlConnection(connString);
+        
+            try
+            
+            {
+            
+                if (connection.State == ConnectionState.Closed)
+                
+                    connection.Open();
+                    
+
+                MySqlDataAdapter sqlda = new MySqlDataAdapter(sql, connection);  //先要通过MySqlDataAdapter方法获得一个sqlAadpter
+                
+                DataSet dts = new DataSet(); //我们需要返回的dataset
+                
+                sqlda.Fill(dts, "lwx");  //注意这个Fill函数，第二个参数代表是表名，需要提前声明，如果不声明，可能就没法使用了，Dont know why,将来知道了可能回来更新？
+                
+                return dts;
+                
+            }
+            
+            catch (Exception ex)
+            
+            {
+            
+                MessageBox.Show(ex.ToString());
+                
+                return null;
+                
+            }
+            
+        }
+        
+       try catch是个编程的好习惯
+       
+根据上面的方法，我们就能返回得到一个从数据库中查询出来的dataset，我们可以做什么呢？
+首先是一个个东西给它提取出来试试，比如我们这个dataset
+
+![](https://cdn.jsdelivr.net/gh/hnkjdaxzzq/img@c77a8b5197dc4ba1feab5a4320b888d0e595b826/2022/04/05/9a5ff6e7786d698dc4c2a6dc4811fc86.png)
+
+这个表是我们从数据库中摘下来的，其中最简单的做法就是直接从中获取数据
+
+举个最简单的例子：string name = dt.Tables[0].Rows[0][1].ToString();
+
+可以返回一个name = 何凌霄哈
 
 ### c#中窗口间传参
 
