@@ -61,6 +61,7 @@
        try catch是个编程的好习惯
        
 根据上面的方法，我们就能返回得到一个从数据库中查询出来的dataset，我们可以做什么呢？
+
 首先是一个个东西给它提取出来试试，比如我们这个dataset
 
 ![](https://cdn.jsdelivr.net/gh/hnkjdaxzzq/img@c77a8b5197dc4ba1feab5a4320b888d0e595b826/2022/04/05/9a5ff6e7786d698dc4c2a6dc4811fc86.png)
@@ -70,6 +71,17 @@
 举个最简单的例子：string name = dt.Tables[0].Rows[0][1].ToString();
 
 可以返回一个name = 何凌霄哈
+
+当然更重要的用处自然是从数据库中把数据全都放到dataGridView中去，也就是表格控件。
+
+我们首先要在窗口拖一个dataGridView进去，然后这样初始化它就行了
+
+
+dataGridView1.DataSource = dt;
+
+dataGridView1.DataMember = "lwx";
+
+这样这个控件就默认显示的你的数据库的内容了
 
 ### c#中窗口间传参
 
