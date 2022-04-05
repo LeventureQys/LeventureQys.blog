@@ -11,7 +11,7 @@
 
   技术类:[ 轩先生的工具箱 ](./pages/Tech.html)
 
-
+  文学部官网开发日志:[ 轩先生摸鱼小日常 ](./pages/LcProcessing.html)
 
 
 
