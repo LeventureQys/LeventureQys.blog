@@ -14,3 +14,19 @@
 
 安装方案如下：（VS2015 - Qt5.10）[https://www.likecs.com/show-204623088.html]
 
+我用的是戴工老哥的安装包，按照博客中的方法安装，插件没法很好地兼容，会提示有的文件不存在，所以我选择了使用另外一个插件，就可以使用了
+
+🤗在qt中可以直接在ui设计界面设定一个connect
+
+先说下什么是信号与槽，其实直白点说就是触发器和接收器，翻译问题让这两个令人有点难以理解
+
+信号:Signal，槽:Slots
+
+不知道谁翻译的，确实难懂
+
+总之说下普遍的连接方法吧： 
+
+QObject:connect(sender,SIGAL(signal()),receiver,SLOT(slot());
+
+这个QObject:: 可以省略，就是connect(sender,SIGAL(signal()),receiver,SLOT(slot());
+
