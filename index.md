@@ -21,4 +21,4 @@
 
   轩先生随手记: [ 写给世界的一封情书 ](./pages/Daily.html)
 
-  毕业设计开发日志：[毕业设计：从毕业到失业]（./pages/LeventureDesign_Profile.md）
+  毕业设计开发日志：[ 毕业设计：从毕业到失业 ]（./pages/LeventureDesign_Profile.html）
