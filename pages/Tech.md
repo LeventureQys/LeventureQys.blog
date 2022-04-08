@@ -45,6 +45,13 @@
             return sPath;            
         }
 
+另外我突发奇想，觉得自己有点像个傻逼，就是从数据库中读取出来dataGridView之后，还可以用
+
+dataGridView1.Columns[0].HeaderText = "工号/学号";
+
+这样的指令去修改抬头，这样就不会显得很难看了
+
+
 ## 2022.4.5
 
 ### dataset的使用
