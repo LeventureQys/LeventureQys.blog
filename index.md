@@ -20,3 +20,5 @@
   从零开始DBA之路 :[ 从现在开始，我将一点不学并且超神 ](./pages/DataBase.html)
 
   轩先生随手记: [ 写给世界的一封情书 ](./pages/Daily.html)
+
+  毕业设计开发日志：[毕业设计：从毕业到失业]（./pages/LeventureDesign_Profile.md）
