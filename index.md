@@ -9,7 +9,11 @@
 
   文学类:[ 轩先生的一场梦 ](./pages/Lecture.html)
 
-  技术类:[ 轩先生的工具箱 ](./pages/Tech.html)
+  C#:[ 轩先生的C#工具箱 ](./pages/CSTech.html)
+  
+  QT:[ 轩先生的Qt工具箱 ](./pages/QtTech.html)
+  
+  杂项:[ 轩先生的杂项工具箱 ](./pages/AnythinTech.html)
 
   文学部官网开发日志:[ 轩先生摸鱼小日常 ](./pages/LcProcessing.html)
 
