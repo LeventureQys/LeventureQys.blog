@@ -19,57 +19,30 @@
 
 (C#选择文件的对话框控件)[https://blog.csdn.net/zdyueguanyun/article/details/8622583]
 
-        public string OpenFile()
-        
+        public string OpenFile()        
         {
-        
-            string strFileName = "";
-            
-            OpenFileDialog ofd = new OpenFileDialog();
-            
-            ofd.Filter = "Excel文件(*.xls;*.xlsx)|*.xls;*.xlsx|word文档(*.doc;*.docx)|*.doc;*.docx|所有文件|*.*";
-            
-            ofd.ValidateNames = true; // 验证用户输入是否是一个有效的Windows文件名
-            
-            ofd.CheckFileExists = true; //验证路径的有效性
-            
-            ofd.CheckPathExists = true;//验证路径的有效性
-            
-            if (ofd.ShowDialog() == DialogResult.OK) //用户点击确认按钮，发送确认消息
-            
-            {
-            
-                strFileName = ofd.FileName;//获取在文件对话框中选定的路径或者字符串
-                
-
-            }
-            
-            return strFileName;
-            
-        }
-        
-
-        public string OpenFolder()
-        
-        {
-        
-            string sPath = "";
-            
-            FolderBrowserDialog folder = new FolderBrowserDialog();
-            
-            folder.Description = "选择文件所在文件夹目录";  //定义在对话框上显示的文本
-            
-
-            if (folder.ShowDialog() == DialogResult.OK)
-            
-            {
-            
-                sPath = folder.SelectedPath;
-                
-            }
-            
-            return sPath;
-            
+            string strFileName = "";            
+            OpenFileDialog ofd = new OpenFileDialog();            
+            ofd.Filter = "Excel文件(*.xls;*.xlsx)|*.xls;*.xlsx|word文档(*.doc;*.docx)|*.doc;*.docx|所有文件|*.*";            
+            ofd.ValidateNames = true; // 验证用户输入是否是一个有效的Windows文件           
+            ofd.CheckFileExists = true; //验证路径的有效性           
+            ofd.CheckPathExists = true;//验证路径的有效性           
+            if (ofd.ShowDialog() == DialogResult.OK) //用户点击确认按钮，发送确认消息           
+            {            
+                strFileName = ofd.FileName;//获取在文件对话框中选定的路径或者字符串                
+            }            
+            return strFileName;           
+        }        
+        public string OpenFolder()        
+        {        
+            string sPath = "";            
+            FolderBrowserDialog folder = new FolderBrowserDialog();            
+            folder.Description = "选择文件所在文件夹目录";  //定义在对话框上显示的文            
+            if (folder.ShowDialog() == DialogResult.OK)           
+            {           
+                sPath = folder.SelectedPath;                
+            }           
+            return sPath;            
         }
 
 ## 2022.4.5
