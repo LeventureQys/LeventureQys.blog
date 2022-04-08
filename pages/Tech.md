@@ -9,7 +9,15 @@
 原博:[轩先生大冒险](https://leventureqys.github.io/)
 
 
+## 2022.4.8
 
+### c#文件操作
+
+#### 基本文件操作
+
+参考博客 ： （最全的c#文件操作）[https://www.cnblogs.com/dongh/p/15429149.html]
+
+(C#选择文件的对话框控件)[https://blog.csdn.net/zdyueguanyun/article/details/8622583]
 
 ## 2022.4.5
 
