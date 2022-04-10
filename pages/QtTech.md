@@ -4,6 +4,27 @@
 
 里面大概会写一些和Qt相关的内容，也不说是从0开始，感觉Qt做东西和用 C#也差不了很多？也许吧，总之慢慢来，一步一个脚印，直到给它拿下。
 
+## 2022.4.10
+
+### 中间休了两天，实在是上班上的头都有点晕了。
+
+通常这个 receiver需要代表的是一个窗口类，而不是某个特定的控件
+
+比如我们写一个函数，它的作用是让一个label的text变成正宗大肥猪
+方法就这么写：
+void MainWindow::textChange(){
+
+    ui->label->setText(" 正宗大肥猪 ");
+    
+}
+
+而我们的connect就需要这么写：
+
+connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(textChange()));
+
+就写在mainwindow.cpp中，当然直接卸载mainwindow.h中也是可以的
+
+
 ## 2022.4.8
 
 ### 从零开始，Qt开发
@@ -29,4 +50,5 @@
 QObject:connect(sender,SIGAL(signal()),receiver,SLOT(slot());
 
 这个QObject:: 可以省略，就是connect(sender,SIGAL(signal()),receiver,SLOT(slot());
+
 
