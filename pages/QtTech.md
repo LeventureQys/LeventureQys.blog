@@ -24,6 +24,7 @@ connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(textChange()));
 
 就写在mainwindow.cpp中，当然直接卸载mainwindow.h中也是可以的
 
+另外有个问题，就是这个qt连接vs，我现在还没搞明白，主要是创建了一个新的项目之后，没有哪个ui.h文件，我也不知道为什么
 
 ## 2022.4.8
 
