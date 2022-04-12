@@ -4,10 +4,25 @@
 
 里面大概会写一些和Qt相关的内容，也不说是从0开始，感觉Qt做东西和用 C#也差不了很多？也许吧，总之慢慢来，一步一个脚印，直到给它拿下。
 
-## 2022.4.12 .ui文件打开失败
+## 2022.4.12 .ui文件打开失败 || 文件操作
 
 右键.ui文件->打开方式->添加.. ->找到msvc2015\Bin目录下的desinger.exe 确定->将其设为默认，再打开，就可以用了
 
+一般再QT中操作文件需要先实例化一个QFile对象，比如我现在可以写一个方法：
+
+bool QtFirst::openTextByIODevice(const QString & aFileName)
+{
+	QFile aFile(aFileName);
+	if (!aFile.exists()) //假如文件不存在
+	{
+		return false;
+	}
+	if (!aFile.open(QIODevice::ReadOnly | QIODevice::Text)) { //如果打开方式不是只读或是文本文件
+		return false;
+	}
+	aFile.close();//关闭文件
+	return true;
+}
 ## 2022.4.11 简单说下vs+qt的配置问题
 
 说实在的，qt自带的那个creator倒也不是不能用，就是单纯的不好用，所以一般的来说，我们会把这个qt绑定在vs上使用，一个是vs的在作为编译器这方面远远比qt creator好用
