@@ -23,6 +23,32 @@ bool QtFirst::openTextByIODevice(const QString & aFileName)
 	aFile.close();//关闭文件
 	return true;
 }
+
+void QtFirst::on_pushButton_clicked() { //注意，如果需要一个点击的槽函数，可以以on_控件名称_clicked()的形式写一个函数，这样就点击会触发该槽函数了
+
+	QString curPath = QDir::currentPath();
+	
+	QString dlgTitle = "打开一个文件";
+	
+	QString filter = "文本文件(*.txt *.docx *.doc);;所有文件(*.*)";
+
+	//通过这个getOpenFileName方法打开一个选择文件的窗口，输入的参数有父窗口指针this，窗口标题dlgtitle，一个默认目录，和一个筛选器，选择特定的文件格式
+
+	QString aFileName = QFileDialog::getOpenFileName(this, dlgTitle, curPath, filter); 
+
+	if (aFileName.isEmpty()) {
+	
+		return;
+		
+	}
+	
+	openTextByIODevice(aFileName);
+	
+}
+
+这里写了个按钮，点击之后返回一个文件，同时调用这个openTextByIODevice方法：
+
+
 ## 2022.4.11 简单说下vs+qt的配置问题
 
 说实在的，qt自带的那个creator倒也不是不能用，就是单纯的不好用，所以一般的来说，我们会把这个qt绑定在vs上使用，一个是vs的在作为编译器这方面远远比qt creator好用
