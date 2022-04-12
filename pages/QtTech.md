@@ -11,18 +11,32 @@
 一般再QT中操作文件需要先实例化一个QFile对象，比如我现在可以写一个方法：
 
 bool QtFirst::openTextByIODevice(const QString & aFileName)
+
 {
+
 	QFile aFile(aFileName);
+	
 	if (!aFile.exists()) //假如文件不存在
+	
 	{
+	
 		return false;
+		
 	}
+	
 	if (!aFile.open(QIODevice::ReadOnly | QIODevice::Text)) { //如果打开方式不是只读或是文本文件
+	
 		return false;
+		
 	}
+	
 	aFile.close();//关闭文件
+	
 	return true;
+	
 }
+
+放置一个按钮pushButton，点击后可以选择文件，并调用上面这个方法
 
 void QtFirst::on_pushButton_clicked() { //注意，如果需要一个点击的槽函数，可以以on_控件名称_clicked()的形式写一个函数，这样就点击会触发该槽函数了
 
