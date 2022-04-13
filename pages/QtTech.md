@@ -4,6 +4,32 @@
 
 里面大概会写一些和Qt相关的内容，也不说是从0开始，感觉Qt做东西和用 C#也差不了很多？也许吧，总之慢慢来，一步一个脚印，直到给它拿下。
 
+## 2022.4.13 关于链接库
+
+之前我觉得可能c++中不好使用C#的类，但是其实我错了，还是能有好办法的只是我懂得太少了，现在我在这里简单写一下步骤和我踩过的坑。
+
+1.首先需要一个c#的项目和c++的项目，注意这个c#的项目必须是类库，而且这个c++的项目必须是clr空项目(当然你要是那种普通的c++项目也行，但是那个/clr的设置会是你过不去的坎)。注意，这里让你建立的clr空项目并不是让你直接用的，因为它/clr并不是一个qt兼容的设置所以这个c++项目只能做一个中间态的兼容类，到时候转换成 c++的dll，再让qt去调用。
+
+2.建好项目之后，需要修改两个设置
+
+!(MFC的使用和公共语言支持)[https://cdn.jsdelivr.net/gh/hnkjdaxzzq/img@9d35c75dc7449673c3acd39e0db7fd8ac6e680bb/2022/04/13/5ae57262b25b275c765fe843568ebd5f.png]
+
+!(链接器->子系统->)[https://cdn.jsdelivr.net/gh/hnkjdaxzzq/img@0404b852fa7b98f436b9ab4fcc9699052ccddc42/2022/04/13/3e6ecda67c76b6d790489a59ba2c6413.png]
+
+3.修改完两个设置之后，就可以开始写了，需要在头文件中输入
+
+#using "D:\Workshop\ClassLibrary1\Debug\ClassLibrary1.dll"
+
+对其进行引用
+
+在源文件中 使用其命名空间 如 using namespace LeventureDesign;
+
+然后实例化一个类即可
+
+LeventureDesign::PublicClass^ pc = gcnew LeventureDesign::PublicClass();
+
+注意由于这个是托管类，需要^符号进行标注
+
 ## 2022.4.12 .ui文件打开失败 || 文件操作 || 导入数据库功能
 
 ### 数据库功能
