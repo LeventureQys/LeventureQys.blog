@@ -8,6 +8,13 @@
 
 原博:[轩先生大冒险](https://leventureqys.github.io/)
 
+## 2022.4.13
+
+### 未能找到类型或命名空间名的情况
+
+具体链接 : [ C# 未能找到类型或命名空间名称的四种情况 ](https://blog.csdn.net/li_gege/article/details/103416210?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.nonecase)
+
+可能是由.NET版本不对导致的
 
 ## 2022.4.8
 
