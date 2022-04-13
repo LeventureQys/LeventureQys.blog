@@ -32,6 +32,10 @@ LeventureDesign::PublicClass^ pc = gcnew LeventureDesign::PublicClass();
 
 注意由于这个是托管类，需要^符号进行标注
 
+#### 4.使用
+
+这个类应该就可以使用了，但是不管是什么类库，似乎都不支持静态方法
+
 ## 2022.4.12 .ui文件打开失败 || 文件操作 || 导入数据库功能
 
 ### 数据库功能
