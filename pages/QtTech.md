@@ -34,7 +34,7 @@ LeventureDesign::PublicClass^ pc = gcnew LeventureDesign::PublicClass();
 
 #### 4.使用
 
-这个类应该就可以使用了，但是不管是什么类库，似乎都不支持静态方法
+这个类应该就可以使用了，不管是静态方法还是类方法，都是可以用的了。
 
 ## 2022.4.12 .ui文件打开失败 || 文件操作 || 导入数据库功能
 
