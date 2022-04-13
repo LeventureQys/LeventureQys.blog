@@ -16,6 +16,46 @@
 
 另外注意，如果你是托管类中的声明，如果只有声明接口但是却没有写任何实现，则会报错LNK2020 无法解析xxx，这是个很坑的点，因为并没有很明确的写清楚错误原因。
 
+#### 格式转换的问题
+
+现在我这个c#转c++/clr 已经成功了，现在要做的就是把c++打包成一个纯c++的dll，做法不难，但需要进行对接，这时候格式就需要进行转换。
+
+就拿我之前写的防火墙距离，比如我现在有一个方法bool CFirewall::AddApplication(System::String^ strAppPath, System::String^ strAppName) 我现在需要将其打包成一个纯c++的接口，我该怎么做？
+
+首先我们可以先写一个接口类，我就称其为Caller.cpp，在其中写一个对外的接口DLL_FIREWALL bool AddApp(char* strAppPath, char* strAppName) (DLL_FIREWALL 是一个宏，你知道是extern "C" _declspec (dllexport)就可以了)
+
+DLL_FIREWALL bool AddApp(char* strAppPath, char* strAppName) //接收的参数是char*类型
+
+{
+
+	System::String^ apppath = gcnew System::String(strAppPath); //将char*类型通过构造函数转换成System::String类型
+	
+	System::String^ appname = gcnew System::String(strAppName);
+	
+
+	CFirewall cfer;
+	
+	bool isok = cfer.AddApplication(apppath, appname); //然后再调用其函数即可
+	
+	if (isok) {
+	
+		printf("应用已成功添加");
+		
+	}
+	
+	else {
+	
+		printf("应用添加失败");
+		
+	}
+	
+	getchar();
+	
+	return true;
+}
+
+#### c#转c++遇到的一些问题
+
 之前我觉得可能c++中不好使用C#的类，但是其实我错了，还是能有好办法的只是我懂得太少了，现在我在这里简单写一下步骤和我踩过的坑。
 
 #### 1.首先需要一个c#的项目和c++的项目
