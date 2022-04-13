@@ -13,10 +13,10 @@
 注意这个c#的项目必须是类库，而且这个c++的项目必须是clr空项目(当然你要是那种普通的c++项目也行，但是那个/clr的设置会是你过不去的坎)。注意，这里让你建立的clr空项目并不是让你直接用的，因为它/clr并不是一个qt兼容的设置所以这个c++项目只能做一个中间态的兼容类，到时候转换成 c++的dll，再让qt去调用。
 
 #### 2.建好项目之后，需要修改两个设置
+![MFC和/clr选项](https://cdn.jsdelivr.net/gh/hnkjdaxzzq/img@9d35c75dc7449673c3acd39e0db7fd8ac6e680bb/2022/04/13/5ae57262b25b275c765fe843568ebd5f.png "MFC和/clr选项")
 
-!(MFC的使用和公共语言支持)[https://cdn.jsdelivr.net/gh/hnkjdaxzzq/img@9d35c75dc7449673c3acd39e0db7fd8ac6e680bb/2022/04/13/5ae57262b25b275c765fe843568ebd5f.png]
 
-!(链接器->子系统->)[https://cdn.jsdelivr.net/gh/hnkjdaxzzq/img@0404b852fa7b98f436b9ab4fcc9699052ccddc42/2022/04/13/3e6ecda67c76b6d790489a59ba2c6413.png]
+![系统->子系统](https://cdn.jsdelivr.net/gh/hnkjdaxzzq/img@0404b852fa7b98f436b9ab4fcc9699052ccddc42/2022/04/13/3e6ecda67c76b6d790489a59ba2c6413.png "系统->子系统")
 
 #### 3.修改完两个设置之后，就可以开始写了，需要在头文件中输入
 
