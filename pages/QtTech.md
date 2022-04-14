@@ -53,6 +53,8 @@ System::String 转制 const wchar_t*类型的方法 如下：
 wchar_t* chrAppPath = (wchar_t*)(Marshal::StringToHGlobalUni(strAppPath)).ToPointer();
 
 
+详情见项目[Firewall.dll 带demo](https://github.com/LeventureQys/Firewall)
+
 ## 2022.4.13 C#和QT链接之后的一些问题 || 关于链接库 
 
 #### C#和QT之间链接出现的一些问题
