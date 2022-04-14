@@ -1,10 +1,12 @@
-# Qt工具箱
+# Qt C++ 工具箱
 
 ## 从零开始的Qt开发之路
 
 里面大概会写一些和Qt相关的内容，也不说是从0开始，感觉Qt做东西和用 C#也差不了很多？也许吧，总之慢慢来，一步一个脚印，直到给它拿下。
 
-## 2022.4.14 路径取进程名
+## 2022.4.14 路径取进程名 || 一些参数类型转换问题
+
+#### 由路径取进程名：
 
 /*内存安全的版本*/
 
@@ -23,7 +25,7 @@ char *get_filename(char *fullpath)
  
 	ptr = fullpath + len;
  
-	while (ptr != fullpath && *ptr != '/')
+	while (ptr != fullpath && *ptr != '\') // 注1
 	
 		ptr--;
  
@@ -33,6 +35,22 @@ char *get_filename(char *fullpath)
  
 	return ptr;	
 }
+
+注1:注意一个问题，这里的*ptr != '/' 其实是有点问题的，因为常规给定的路径不会是这样，而是\ 两种斜杠不同，当然这都取决于你输入的路径如何
+
+#### C++参数类型转换 
+
+其实c++写的dll哪里还需要什么类型转换啊？，主要是说一下在dll里面的类型转换
+
+我这个Firewall代码本身的代码其实不是纯c++，而是c#和c++的混合编程，也就是说其内部有一个带string类型的接口，在托管C++代码中将char*类型转换成 System::String 类型的方法如下:
+
+String^ apppath = System::Runtime::InteropServices::Marshal::PtrToStringAnsi((IntPtr)strAppPath);
+
+源代码中其实是有一个自带const wchar_t*指针的接口，但是这个接口的问题就是：我们不可能要求外部调用者也用这样的类型，所以必须得转置一下。
+
+System::String 转制 const wchar_t*类型的方法 如下：
+
+wchar_t* chrAppPath = (wchar_t*)(Marshal::StringToHGlobalUni(strAppPath)).ToPointer();
 
 
 ## 2022.4.13 C#和QT链接之后的一些问题 || 关于链接库 
