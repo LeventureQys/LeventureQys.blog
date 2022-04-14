@@ -10,6 +10,28 @@
 
 qt中窗口有两种打开方式，一种是->show()，一种事->exec()，前者打开之后就无了，后者打开之后会锁定父窗口
 
+其实在这里打开对话框之后就相当于事进入了一个while()循环，直到它关闭，为什么这么说呢？可以打个比方
+
+int ret = dlgTableSize->exec(); //打开一个窗口，进入等到
+
+if(ret == QDialog::Accepted) //如果点击窗口的确认，则触发此if
+
+{
+...
+}
+
+delete dlgTableSize; //用完记得清除窗口，直接delete就行，或者close
+
+#### 子窗口如何操作主窗口?
+
+声明一个子窗口的方法：instance = new QWDialogLocate(this); //加一个this指针声明当前窗口是其子窗口的父窗口
+
+可以通过一行语句获得父窗口对象:MainWindow *parWind = (MainWindow*)parentWidget();
+
+这样就可以得到一个指向父窗口的指针
+
+
+
 #### 由路径取进程名：
 
 /*内存安全的版本*/
