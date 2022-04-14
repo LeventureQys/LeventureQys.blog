@@ -44,6 +44,8 @@ StrAppPath:该应用的路径，如C:\\Program Files (x86)\\LgSoftWAN\\LancooCNS
         
         private static extern bool FwStatus();
 
+详情见项目[Firewall.dll 带demo](https://github.com/LeventureQys/Firewall)
+
 ## 2022.4.13
 
 ### 未能找到类型或命名空间名的情况
