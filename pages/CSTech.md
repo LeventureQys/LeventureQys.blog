@@ -8,6 +8,42 @@
 
 原博:[轩先生大冒险](https://leventureqys.github.io/)
 
+## 2022.4.14
+
+### 关于c#调用dll的方式，如何传char*类型
+
+在我写的这个Firewall的这个项目里，有三个类，其他的东西先不管，暂时只讨论我在c#中调用dll遇到的问题
+
+先说接口，一共两个，一个是bool FwStatus(void) 没什么好说的，检查当前防火墙是否开启的接口，如果开启返回true，未开启返回false,
+
+另一个是
+
+bool AddApp(char* strAppPath,char* strAppName) 
+
+功能：将一个应用程序添加至防火墙例外
+
+参数说明:
+
+StrAppPath:该应用的路径，如C:\\Program Files (x86)\\LgSoftWAN\\LancooCNSC\\Teacher\\LBD.Frame.NetVoice.SIPServer.exe
+
+两个方法在c#中的调用方法如此:
+
+        [DllImport("Firewall.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto)]
+        
+        private static extern bool AddApp([MarshalAs(UnmanagedType.LPStr)]string strAppPath, [MarshalAs(UnmanagedType.LPStr)]string strAppName);
+
+注意，因为AddApp中需要传入char*类型，但是在c#中并没有char*类型，如果直接向dll中传入string会导致乱码，因为char* 是单字节类型，而string是单双字节混用类型。在此需要在输入的string类型前加上[MarshalAs(UnmanagedType.LPStr)]进行修饰具体含义参考 [MarshalAs()UnmanagedType.LPStr](https://blog.csdn.net/qq_18975227/article/details/109818550)
+
+在c++调用中则要注意这个.h文件，我之前没有修改这个.h文件所以会报错，而且不能说你输入一个const wchar_t* 类型，这个怎么说呢，这个是一个ASCII码的形式，是乱码也正常，我之前改成char*类型但是我忘了改.h文件了，其实并没有想象中那么复杂。
+
+
+
+
+
+        [DllImport("Firewall.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto)]
+        
+        private static extern bool FwStatus();
+
 ## 2022.4.13
 
 ### 未能找到类型或命名空间名的情况
