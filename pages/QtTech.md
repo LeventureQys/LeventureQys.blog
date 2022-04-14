@@ -4,6 +4,37 @@
 
 里面大概会写一些和Qt相关的内容，也不说是从0开始，感觉Qt做东西和用 C#也差不了很多？也许吧，总之慢慢来，一步一个脚印，直到给它拿下。
 
+## 2022.4.14 路径取进程名
+
+/*内存安全的版本*/
+
+char *get_filename(char *fullpath)
+
+{
+
+	char *ptr = NULL;
+	
+	int len = strlen(fullpath);
+	
+ 
+	if (fullpath == NULL)
+	
+		return NULL;
+ 
+	ptr = fullpath + len;
+ 
+	while (ptr != fullpath && *ptr != '/')
+	
+		ptr--;
+ 
+	if (*ptr == '/')
+	
+		ptr++;
+ 
+	return ptr;	
+}
+
+
 ## 2022.4.13 C#和QT链接之后的一些问题 || 关于链接库 
 
 #### C#和QT之间链接出现的一些问题
