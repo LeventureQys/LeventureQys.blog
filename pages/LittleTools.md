@@ -2,6 +2,42 @@
 
 压力面前保持优雅
 
+### qt连接数据库范例
+
+
+
+ QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+ 
+    db.setHostName("localhost");         //连接数据库主机名 注意本地可以不用127.0.0.1，否则容易报错
+    
+    db.setPort(3306);                            //连接数据库端口号
+    
+    db.setDatabaseName("db_papermaker");    //连接数据库名
+    
+    db.setUserName("root");                //数据库用户名
+    
+    db.setPassword("1234");            //数据库密码
+    
+    db.open();
+    
+    if (!db.open()) 
+    
+    {
+    
+        qDebug() << "不能连接" << "connect to mysql error" << db.lastError().text();
+	
+        return;
+	
+    }
+    
+    else
+    
+    {
+    
+        qDebug() << "连接成功" << "connect to mysql OK";
+	
+    }
+
 ### qt 中文报错？
 
 如果是qt5以上版本，将
