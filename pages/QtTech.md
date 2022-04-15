@@ -4,11 +4,25 @@
 
 里面大概会写一些和Qt相关的内容，也不说是从0开始，感觉Qt做东西和用 C#也差不了很多？也许吧，总之慢慢来，一步一个脚印，直到给它拿下。
 
-## 2022.4.15 QtDesigner 中 窗口没有工具栏？
+## 2022.4.15 
+
+## Driver not loaded?
+
+真草泥马了，这问题是真的傻逼，我的QT 可能跟我的 数据库mysql装的不是一个位数的，mysql是32位的，其实我的qt用的编译器也是32位的，但是系统却不是32位的可能，所以对mysql数据库的连接connector 不能直接用mysql给定的，具体原理我也不知道，总之网上的教程很多其实都没说到点子上，反正我自己的问题并没有解决，而在我一段时间的思考之后，我才意识到可能是我的connector也下错了，而是要下个32位的connector
+
+因为我的mysql版本是5.5 ， 所以这个connector的版本可以下个旧一点的，比如这个 [Windows (x86, 32-bit), ZIP Archive](https://downloads.mysql.com/archives/c-c/) 下个这个就行
+
+## QtDesigner 中 窗口没有工具栏？
 
 因为Widgets类本身就是没有 工具栏 状态栏等等，也没法用Action，只有MainWindow类才继承了这些功能，如果需要用这些的话只能再新建一个MainWindow。
 
 如果需要就新建一个MainWindow类，然后将Widget中所有组件复制过去这样
+
+### driver not loaded? 
+
+转移lib和dll 的方法都试过了，唯一的问题就是数据库和qt的版本之间不兼容，32位的数据库
+
+然后数据库连接还是可能出错，不要用127.0.0.1做本地，按理说是没问题的，但还是报错
 
 ### qt 中文报错？
 
