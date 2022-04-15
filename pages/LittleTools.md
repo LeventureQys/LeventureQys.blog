@@ -2,9 +2,24 @@
 
 压力面前保持优雅
 
+### qt中异常处理:
+
+enum Except { EXCEP_ZERO, EXCEP_ONE };
+
+QT_TRY{
+
+...
+
+}
+
+QT_CATCH(Except ex){
+
+if(ex == EXCEP_ZERO) QT_RETHROW;
+
+}
+
+
 ### qt连接数据库范例
-
-
 
  QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
  
