@@ -13,7 +13,7 @@
   
   QT:[ 轩先生的Qt工具箱 ](./pages/QtTech.html)
   
-  杂项:[ 轩先生的杂项工具箱 ](./pages/AnythinTech.html)
+  杂项:[ 轩先生的杂项工具箱 ](./pages/LittleTools.html)
 
   文学部官网开发日志:[ 轩先生摸鱼小日常 ](./pages/LcProcessing.html)
 
