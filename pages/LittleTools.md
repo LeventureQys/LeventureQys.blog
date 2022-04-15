@@ -2,6 +2,47 @@
 
 压力面前保持优雅
 
+### qt 中文报错？
+
+如果是qt5以上版本，将
+
+#if _MSC_VER >= 1600
+
+#pragma execution_character_set("utf-8")
+
+#endif
+
+插入对应msvc目录下的qglobal.h文件中即可解决。
+
+来自博客 [qt中文乱码解决方案](https://blog.csdn.net/weixin_42258743/article/details/119731075)
+
+### 2022.4.15 一些QT常见的参数
+
+QFile 读写文件的函数:
+
+QFileDialog::getOpenFileNmae : 打开一个窗体，可以在其中选取文件
+
+范例:
+	QString curPath = QDir::currentPath(); // 默认为当前路径
+	
+	QString dlgTitle = "打开一个文件";
+	
+	QString filter = "文本文件(*.txt *.docx);;音乐文件(*.mp3 *.wav *wma);;所有文件(*.*)";  // 写这个filter千万注意格式，中间是空格，不然读不出
+	
+	QString aFilename = QFileDialog::getOpenFileName(this, dlgTitle, curPath, filter); //父窗口 标题 默认路径 分离器
+
+widget 的函数:
+
+setWindowFlag():设置窗体的标记
+
+setWindowType: 一些比较基本的属性，比如有无标题栏等等
+
+setWindowState:令窗体最大化最小化等窗口设置
+
+setWindowModality: 用于设置窗口的模态，只对窗口类型有效
+
+setWindowOpacity: 设置窗体透明度
+
 ### 2022.4.14
 
 #### Qt C++中窗口常见事件
