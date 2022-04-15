@@ -10,6 +10,20 @@
 
 如果需要就新建一个MainWindow类，然后将Widget中所有组件复制过去这样
 
+### qt 中文报错？
+
+如果是qt5以上版本，将
+
+#if _MSC_VER >= 1600
+
+#pragma execution_character_set("utf-8")
+
+#endif
+
+插入对应msvc目录下的qglobal.h文件中即可解决。
+
+来自博客 [qt中文乱码解决方案](https://blog.csdn.net/weixin_42258743/article/details/119731075)
+
 ## 2022.4.14 路径取进程名 || 一些参数类型转换问题 ||QTimer 控件的问题
 
 #### QTimer使用的问题
