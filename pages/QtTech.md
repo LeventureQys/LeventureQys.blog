@@ -4,6 +4,37 @@
 
 里面大概会写一些和Qt相关的内容，也不说是从0开始，感觉Qt做东西和用 C#也差不了很多？也许吧，总之慢慢来，一步一个脚印，直到给它拿下。
 
+## 2022.4.16 数据库?
+
+就是有个问题，你这个数据库连接了对吧，你建立了一个query对象，他就可以执行你的代码吗？理论上说是你的query直接和你当前的databse绑定了，但是并不一定，最好是直接在建立之后进行一下初始化
+
+比如: 在.h文化中初始化 QSqlQuery query = QSqlQuery(db);
+
+然后在cpp中进行绑定 QSqlQuery query(db);
+
+在执行中要注意一点，就是第一行并不是默认的，要先query.next()
+
+举个例子
+
+    while(query.next())     //遍历数据库查找数据，先next，否则
+    
+    {
+    
+        name = query.value(1).toString();
+	
+        sex = query.value(2).toString();
+	
+        stu_number = query.value(3).toString();
+
+        qDebug() << name;
+	
+        qDebug() << sex;
+	
+        qDebug() << stu_number;
+
+    }
+
+
 ## 2022.4.15 
 
 ## Driver not loaded?
