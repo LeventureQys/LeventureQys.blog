@@ -6,6 +6,10 @@
 
 ## 2022.4.18 
 
+看到个挺全的教程文档，当个参考
+
+[qt教程](https://blog.csdn.net/p1279030826/article/details/106546752?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165027409816782094855075%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=165027409816782094855075&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-106546752.142^v9^pc_search_result_cache,157^v4^control&utm_term=qt&spm=1018.2226.3001.4187)
+
 ### QString::Comapre 函数
 
 之前遇到一个坑点就是关于QString::Compare函数，我以为这个函数是用作比对两个字符串是否相同的，但是并不是，它是用作两个字符串比大小的，具体实例如下：
