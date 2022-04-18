@@ -2,6 +2,112 @@
 
 压力面前保持优雅
 
+### qt 连接数据库实例，展示一个DataOperate的构造函数
+
+ qno = ""; //试题编号
+ 
+        qpic = ""; // 题目图片路径
+	
+        //QString qcontent; //试题文字
+	
+        difficulty = -1; //
+	
+        Cid = -1;
+	
+        BelongId = -1;
+	
+        Answer = "";
+
+        db = QSqlDatabase::addDatabase("QMYSQL");
+
+        //QSqlDatabase db;
+	
+        //if (QSqlDatabase::contains("qt_sql_default_connection"))
+	
+        //    db = QSqlDatabase::database("qt_sql_default_connection");
+	
+        //else
+	
+        //    db = QSqlDatabase::addDatabase("QMYSQL");
+      
+        db.setHostName("localhost");         //连接数据库主机名
+	
+        db.setPort(3306);                            //连接数据库端口号
+	
+        db.setDatabaseName("db_papermaker");    //连接数据库名
+	
+        db.setUserName("root");                //数据库用户名
+	
+        db.setPassword("1234");            //数据库密码
+	
+        db.open();
+
+       
+        if (!db.open()) //判断当前db是否已经连接成功
+	
+        {
+	
+            qDebug() << "不能连接" << "connect to mysql error" << db.lastError().text();
+	    
+            return;
+	    
+        }
+	
+        else
+	
+        {
+            qDebug() << "连接成功" << "connect to mysql OK";
+	    
+            QSqlQuery query = QSqlQuery(db); //一个执行sql语句的实例，会将存储的内容放到其中
+	    
+           bool  value = query.exec("select * from tb_user");
+	   
+            if (value) {
+	    
+                qDebug() << "query 连接成功" << "query connect to mysql OK";
+		
+            }
+	    
+            //query.exec("select * from tb_user");
+	    
+          /*  query.next();
+	  
+            qDebug() << query.value(1).toString();*/
+           
+        }
+
+            
+         }
+    
+
+
+
+### qt中向tableView中添加数据库中的数据
+
+        dtop.model->setQuery(QString("select * from tb_questiondata"));
+	
+        //列名  
+	
+        dtop.model->setHeaderData(0, Qt::Horizontal, tr("试题编号"));
+	
+        dtop.model->setHeaderData(1, Qt::Horizontal, tr("试题路径"));
+	
+        /*model->setHeaderData(2, Qt::Horizontal, tr("试题内容"));*/
+	
+       dtop.model->setHeaderData(2, Qt::Horizontal, tr("试题难度"));
+       
+        dtop.model->setHeaderData(3, Qt::Horizontal, tr("试题章节"));
+	
+        dtop.model->setHeaderData(4, Qt::Horizontal, tr("试题类型"));
+	
+        dtop.model->setHeaderData(5, Qt::Horizontal, tr("试题答案"));
+	
+        ui.tableView->setModel(dtop.model);//数据放置到tableView中
+	
+        ui.tableView->verticalHeader()->hide();//不显示序号
+	
+
+
 ### qt中异常处理:
 
 enum Except { EXCEP_ZERO, EXCEP_ONE };
