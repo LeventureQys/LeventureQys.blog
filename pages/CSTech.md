@@ -8,6 +8,13 @@
 
 原博:[轩先生大冒险](https://leventureqys.github.io/)
 
+## 2022.4.19 
+
+### datagridview 修改表头
+
+dataGridView1.Columns[0].HeaderCell.Value = "编号";
+
+
 ## 2022.4.14
 
 ### 关于c#调用dll的方式，如何传char*类型
