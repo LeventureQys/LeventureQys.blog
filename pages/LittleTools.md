@@ -2,6 +2,32 @@
 
 压力面前保持优雅
 
+### c#打开文件输入到文本框的一个小实例：
+
+        private void btn_Search_Click(object sender, EventArgs e)
+	
+        {
+	
+            OpenFileDialog dialog = new OpenFileDialog();
+	    
+            dialog.Multiselect = false;
+	    
+            dialog.Title = "请选择一张图片";
+	    
+            dialog.Filter = "图片文件|*.jpg,*.jpeg,*.png,*.bmp";
+	    
+            if(dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) //打开一个对话框，而且当你点击确认之后则:
+	    
+            {
+	    
+                String path = dialog.FileName; //得到一个当前文件的文件名
+		
+                txt_Path1.Text = path; //将其输入到txt_Path下
+		
+            }
+	    
+        }
+
 ### qt 连接数据库实例，展示一个DataOperate的构造函数
 
  qno = ""; //试题编号
