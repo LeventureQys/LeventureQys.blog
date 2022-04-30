@@ -2,6 +2,17 @@
 
 压力面前保持优雅
 
+### c#中向dataset中插入一列，并将其放到第一列的方法实例
+
+DataSet ds = SQlHelper.GetDataTable(Con, sb.ToString());
+
+            ds.Tables[0].Columns.Add("openid", System.Type.GetType("System.String"));
+	    
+            ds.Tables[0].Columns["openid"].SetOrdinal(0);//此列放置的顺序
+	    
+            ds.Tables[0].Columns["openid"].Caption=Session["Openid"].ToString();//.SetOrdinal(0);
+
+
 ### c#打开文件输入到文本框的一个小实例：
 
         private void btn_Search_Click(object sender, EventArgs e)
