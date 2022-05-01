@@ -2,6 +2,137 @@
 
 压力面前保持优雅
 
+### c#中 一个一元线性回归方程的实例
+
+	using System;
+	using System.Collections.Generic;
+
+	namespace LeventureDesign
+	{
+	    class LinearRegression
+	    {
+		//static void Main(string[] args)
+		//{
+		//    List<Point> _PList = new List<Point>();
+		//    _PList.Add(new Point(1, 3.09));
+		//    _PList.Add(new Point(2, 5.06));
+		//    _PList.Add(new Point(3, 7.03));
+		//    _PList.Add(new Point(4, 9.12));
+		//    _PList.Add(new Point(5, 10.96));
+		//    _PList.Add(new Point(6, 12.91));
+		//    _PList.Add(new Point(7, 15.01));
+
+		//    Line line = LinearRegressionSolve(_PList);
+		//    Console.WriteLine("Y = " + line.K + " X " + "+ " + line.B);
+
+		//    line = LinearRegressionSolve2(_PList);
+		//    Console.WriteLine("Y = " + line.K + " X " + "+ " + line.B);
+
+		//    line = LinearRegressionSolve3(_PList);
+		//    Console.WriteLine("Y = " + line.K + " X " + "+ " + line.B);
+		//    Console.ReadKey();
+		//}
+
+	       public static Line LinearRegressionSolve(List<Point> _plist)
+		{
+		    double k = 0, b = 0;
+		    double sumX = 0, sumY = 0;
+		    double avgX = 0, avgY = 0;
+		    foreach (var v in _plist)
+		    {
+			sumX += v.X;
+			sumY += v.Y;
+		    }
+		    avgX = sumX / (_plist.Count + 0.0);
+		    avgY = sumY / (_plist.Count + 0.0);
+
+		    //sumA=(x-avgX)(y-avgY)的和 sumB=(x-avgX)平方
+		    double sumA = 0, sumB = 0;
+		    foreach (var v in _plist)
+		    {
+			sumA += (v.X - avgX) * (v.Y - avgY);
+			sumB += (v.X - avgX) * (v.X - avgX);
+		    }
+		    k = sumA / (sumB + 0.0);
+		    b = avgY - k * avgX;
+
+		    Line line = new Line(k, b);
+		    return line;
+		}
+
+		public static Line LinearRegressionSolve2(List<Point> _plist)
+		{
+		    double k = 0, b = 0;
+		    double sumX = 0, sumY = 0;
+		    double sumXY = 0, sumXX = 0;
+		    foreach (var v in _plist)
+		    {
+			sumX += v.X;
+			sumY += v.Y;
+			sumXY += v.X * v.Y;
+			sumXX += v.X * v.X;
+		    }
+
+		    k = (sumX * sumY / (_plist.Count + 0.0) - sumXY) / (sumX * sumX / (_plist.Count + 0.0) - sumXX);
+		    b = (sumY - k * sumX) / (_plist.Count + 0.00);
+
+		    Line line = new Line(k, b);
+		    return line;
+		}
+
+		public static Line LinearRegressionSolve3(List<Point> _plist)
+		{
+		    double k = 0, b = 0;
+		    double sumX = 0, sumY = 0;
+		    double avgX = 0, avgY = 0;
+		    double sumXY = 0, sumXX = 0;
+		    foreach (var v in _plist)
+		    {
+			sumX += v.X;
+			sumY += v.Y;
+			sumXY += v.X * v.Y;
+			sumXX += v.X * v.X;
+		    }
+		    avgX = sumX / (_plist.Count + 0.0);
+		    avgY = sumY / (_plist.Count + 0.0);
+
+		    k = (sumXY - avgY * sumX) / (sumXX - avgX * sumX);
+		    b = avgY - k * avgX;
+
+		    Line line = new Line(k, b);
+		    return line;
+		}
+
+	    }
+
+	    public class Line
+	    {
+		public double K { get; set; }
+		public double B { get; set; }
+
+		public Line(double k, double b)
+		{
+		    K = k;
+		    B = b;
+		}
+	    }
+
+	    public class Point
+	    {
+		public double X { get; set; }
+		public double Y { get; set; }
+
+		public Point(double x, double y)
+		{
+		    X = x;
+		    Y = y;
+		}
+	    }
+
+	}
+
+
+
 ### c#中向dataset中插入一列，并将其放到第一列的方法实例
 
 DataSet ds = SQlHelper.GetDataTable(Con, sb.ToString());
