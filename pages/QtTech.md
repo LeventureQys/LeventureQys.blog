@@ -9,6 +9,10 @@
 
 ## 2022.5.5
 
+因为陶工给的lib是Release版的，所以这里我们也可以用Release版打开，但是这里有个问题，就是在vs中打开一个qt的工程文件，打开debug版是没有问题的，但是release版不行，原因是生成Release版的时候，它并没能正常的生成一个plugins文件，少了dll所以会报错。
+
+解决方案见[QT-This application failed to start because it could not find or load the Qt platform plugin "windows"](https://www.cnblogs.com/happyamyhope/p/7485716.html)
+
 ※ 重要内容
 
 如何在QT中获得窗口&控件的句柄：[获得窗口句柄](https://blog.csdn.net/qq_41951658/article/details/106907800)
