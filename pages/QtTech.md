@@ -6,6 +6,23 @@
 
 ## 2022.5.6
 
+可以设置一下按钮按下去就陷下去，再按一下回弹的方法，就是哪个clicked(bool)方法，调用案例如下：
+
+首先在ui初始化的时候需要对按钮进行设置：ui.btn_Audio->setCheckable(true);
+
+	void LBD_VideoMeeting_SingalMeet::on_btn_Audio_clicked(bool isSilent)
+	{
+		if (isSilent) {
+			qDebug() << "isSilent turns into TURE" << endl;
+		}
+		else {
+			qDebug() << "isSilent turns into FALSE" << endl;
+		}
+	}
+
+
+## 2022.5.6
+
 第一个项目，可视化对讲 关于窗口句柄，其实理解上是没有问题的，为什么5.5找了一天问题呢？其实不是我自己的问题，是Release里面少了个exe文件，但是我并不知道这回事。其中关于访问网络有两个文件时必须的，一个是MediasoupWebSocket.exe，另一个是CLBDVideoMeeting.ini，这两个文件是被LBD_ViedeoMeeting引用了的，但是这里并未提及。
 
 获得
