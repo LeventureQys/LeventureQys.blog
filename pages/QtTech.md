@@ -6,7 +6,9 @@
 
 ## 2022.5.7
 
-一个关于如何将widget变成一个像商用软件那样 不可拖拽大小、没有开启、关闭等按钮的固定窗口[Qt::FramelessWindowHint无边框化，移动，大小调整](https://blog.csdn.net/gongzhengyu/article/details/105879471)
+一个关于如何将widget变成一个像商用软件那样 不可拖拽大小、没有开启、关闭等按钮的固定窗口[Qt::FramelessWindowHint无边框化，移动，大小调整](https://blog.csdn.net/gongzhengyu/article/details/105879471)插入此业务代码的时候需要注意到就是，这个Direction不是Qt自带的，而是一个Enum，需要注意以下这个点
+
+
 
 一些和窗口控件有关的、选中标红的方案:[QT的基本控件的焦点定位及切换](https://blog.csdn.net/Rebiy12/article/details/100148087)
 
