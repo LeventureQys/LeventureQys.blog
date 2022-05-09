@@ -4,6 +4,14 @@
 
 里面大概会写一些和Qt相关的内容，也不说是从0开始，感觉Qt做东西和用 C#也差不了很多？也许吧，总之慢慢来，一步一个脚印，直到给它拿下。
 
+## 2022.5.9 关于如何在qt中添加点击事件
+
+博客 [Qt QLable 响应单击点击事件](https://blog.csdn.net/usister/article/details/76098620) 中写的比较清楚了，注意一点就是，eventFilter是继承过来的方法，所以不能直接取用，需要添加一个override参数，例如：
+
+	public slots:
+		bool eventFilter(QObject *, QEvent *) override;
+
+
 ## 2022.5.7
 
 一个关于如何将widget变成一个像商用软件那样 不可拖拽大小、没有开启、关闭等按钮的固定窗口[Qt::FramelessWindowHint无边框化，移动，大小调整](https://blog.csdn.net/gongzhengyu/article/details/105879471)插入此业务代码的时候需要注意到就是，这个Direction不是Qt自带的，而是一个Enum，需要注意以下这个点
