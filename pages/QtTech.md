@@ -6,6 +6,10 @@
 
 ## 2022.5.9 
 
+### 报错 This application failed to start because it could not find or load the Qt platform plugin"windows" in ""
+
+缺少了platforms的支持，找到msvc文件夹中的platforms文件夹，粘贴到 Release文件夹中就行了
+
 ### VS工程中常用路径宏定义表示$(SolutionDir) $(ProjectDir) $(ProjectName) $(Configuration) 
 
 一个关于VS工程中常用路径宏定义表示的说明 [VS工程中常用路径宏定义表示$(SolutionDir) $(ProjectDir) $(ProjectName) $(Configuration) （good解释的很清楚）](https://blog.csdn.net/qq_23097791/article/details/95986237)
