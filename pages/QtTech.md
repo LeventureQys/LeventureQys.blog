@@ -6,6 +6,10 @@
 
 ## 2022.5.9 
 
+### 在VS中 Qt的release模式下进行调试
+
+[C++ Release下进行调试](https://blog.csdn.net/qq_32867925/article/details/108560317)
+
 ### 报错 This application failed to start because it could not find or load the Qt platform plugin"windows" in ""
 
 缺少了platforms的支持，找到msvc文件夹中的platforms文件夹，粘贴到 Release文件夹中就行了
