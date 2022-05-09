@@ -10,6 +10,8 @@
 
 一个关于VS工程中常用路径宏定义表示的说明 [VS工程中常用路径宏定义表示$(SolutionDir) $(ProjectDir) $(ProjectName) $(Configuration) （good解释的很清楚）](https://blog.csdn.net/qq_23097791/article/details/95986237)
 
+关于TestDemo中给定的默认的引用路径为:$(SolutionDir)$(Configuration)\LBD_VideoMeeting.lib;%(AdditionalDependencies)
+
 ### 关于如何向c++编译生成的exe中设定参数这回事
 
 一般是通过命令行，具体如何实现请参考
