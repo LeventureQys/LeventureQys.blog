@@ -6,6 +6,33 @@
 
 ## 2022.5.10
 
+## 定义问题
+
+# 注意，千万注意
+
+已经定义过的关键字，就不要再定义了
+
+比如
+
+	char* serverip = "0";
+	int port = 4443;
+	char* otherUserName = "0";
+	char* otherUserSeat = "0";
+	char* currentUserName = "0";
+	char* currentUserSeat = "0";
+
+	if (true) {
+		char* serverip = "192.168.110.122";
+		char* port = 4443;
+		char* otherUserName = "11";
+		char* otherUserSeat = "s1";
+		char* currentUserName = "22";
+		char* currentUserSeat = "s2";
+		char* qDebug() << "true";
+	}
+
+这可能会导致一些问题，使得程序无法进入到这个分支里面去，出现严重错误！！！
+
 ## 注意格式转换问题
 
 如果你拿到一个QString类型，先转到char* 再转回QString，可能会缺失一部分内容，导致报错
