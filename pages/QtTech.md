@@ -6,6 +6,25 @@
 
 ## 2022.5.10
 
+## 睡眠真的很重要
+
+关于我在多屏幕之间的坐标转换这个问题上犯了蠢，geometry这个方法设定窗体坐标位置，注意是 x y w h
+
+所以第一个参数不应该带有主桌面的x坐标，因为主窗体第一个坐标永远是0 , 0 !我之前想了半天这个问题，为什么我锁定了主屏幕，结果窗口出现在副屏幕上
+
+	this->setGeometry(screenRect.x() - wholeFrm.width, screenRect.y(), wholeFrm.width, wholeFrm.height);
+
+这显然是错误的，因为screenRect.x() = 0 ，所以该窗体永远只会显示到主屏幕的左边去！\
+
+正确做法范例：
+
+	//获取主屏幕索引
+	int mainScreenID = desktop->primaryScreen();
+	//获得主屏幕宽高
+	QRect screenRect = desktop->screenGeometry(mainScreenID);
+	//将窗体挪到对应位置去
+	this->setGeometry(screenRect.width() - wholeFrm.width, screenRect.y(), wholeFrm.width, wholeFrm.height);
+
 [ 在Qt下处理多屏幕程序方案 ](http://www.360doc.com/content/22/0408/14/496343_1025424454.shtml)
 
 ## 2022.5.9 
