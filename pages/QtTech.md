@@ -4,6 +4,12 @@
 
 里面大概会写一些和Qt相关的内容，也不说是从0开始，感觉Qt做东西和用 C#也差不了很多？也许吧，总之慢慢来，一步一个脚印，直到给它拿下。
 
+## 2022.5.11
+
+int char*、string 和char
+
+直接用(int)进行强制转换可能会导致一些不可预料的错误，需要使用到atoi函数[C++：string类型、char *类型，int类型之间的转换：atoi()，stoi()，c_str()](https://blog.csdn.net/Doutd_y/article/details/82316296)
+
 ## 2022.5.10
 
 ## 定义问题
