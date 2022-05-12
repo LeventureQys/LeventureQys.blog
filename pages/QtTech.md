@@ -8,7 +8,6 @@
 
 ### C++回调函数概要
 
-[关于C++ 回调函数(callback) 精简且实用](https://blog.csdn.net/zhoupian/article/details/119495949)
 
 可以举个实例来看看
 
@@ -49,7 +48,9 @@
 	I'am ProgramB.FunB1() and be called..
 	I'am ProgramB.FunA2() and be called..
 
+要注意一些问题，就是回调函数在类内、类外、静态函数、非静态函数之间的调用关系，详情见下方文章
 
+[关于C++ 回调函数(callback) 精简且实用](https://blog.csdn.net/zhoupian/article/details/119495949)
 
 ### Qt 服务端中 设置心跳断连的实例
 
