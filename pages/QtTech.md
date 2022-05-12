@@ -10,6 +10,47 @@
 
 [关于C++ 回调函数(callback) 精简且实用](https://blog.csdn.net/zhoupian/article/details/119495949)
 
+可以举个实例来看看
+
+	#include <iostream>
+
+	class ProgramA {
+	 public:
+	  void FunA1() { printf("I'am ProgramA.FunA1() and be called..\n"); }
+
+	  static void FunA2() { printf("I'am ProgramA.FunA2() and be called..\n"); }
+	};
+
+	class ProgramB {
+	 public:
+	  void FunB1(void (*callback)()) {
+	    printf("I'am ProgramB.FunB1() and be called..\n");
+	    callback();
+	  }
+	};
+
+	int main(int argc, char **argv) {
+	  ProgramA PA;
+	  PA.FunA1();
+
+	  ProgramB PB;
+	  PB.FunB1(ProgramA::FunA2);
+	}
+	
+上述代码中，也就是说，在一个函数里面写一个typedef (*callback) 则代表向这个函数里面传入了一个 函数的指针，然后就可以在这个函数里面 调用这个函数
+
+比如上面这个FunB1里面，传入一个callback()的区域函数指针，然后在函数体内可以调用这个callback()函数
+
+在实际调用中，我们向FunB1中传入Program类中FunA2函数进去，然后再FunB1的函数实现中，实际上调用的就是FunA2函数了
+
+结果如下：
+
+	I'am ProgramB.FunA1() and be called..
+	I'am ProgramB.FunB1() and be called..
+	I'am ProgramB.FunA2() and be called..
+
+
+
 ### Qt 服务端中 设置心跳断连的实例
 
 [Qt实现简易心跳包机制](https://zhuanlan.zhihu.com/p/452352978)
