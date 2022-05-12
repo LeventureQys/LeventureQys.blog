@@ -52,6 +52,105 @@
 
 [关于C++ 回调函数(callback) 精简且实用](https://blog.csdn.net/zhoupian/article/details/119495949)
 
+这里简单摘抄一下：为了避免 static 函数不能访问非static 成员变量或函数，会严重限制回调函数可以实现的功能。而且在programB中FunB1还使用 programA的类型，也就我预先还要知道回调函数所属的类定义，当programB想独立封装时就不好用了。
+
+一个比较常用的方法就是：可以把非static的回调函数 包装为另一个static函数，这种方式也是一种应用比较广的方法。
+
+	#include <iostream>
+
+	class ProgramA {
+	 public:
+	  void FunA1() { printf("I'am ProgramA.FunA1() and be called..\n"); }
+
+	  void FunA2() { printf("I'am ProgramA.FunA2() and be called..\n"); }
+
+	  static void FunA2Wrapper(void *context) {
+	    printf("I'am ProgramA.FunA2Wrapper() and be called..\n");
+	    ((ProgramA *)context)->FunA2();  // 此处调用的FunA2()是context的函数, 不是this->FunA2()
+	  }
+	};
+
+	class ProgramB {
+	 public:
+	  void FunB1(void (ProgramA::*callback)(), void *context) {
+	    printf("I'am ProgramB.FunB1() and be called..\n");
+	    ((ProgramA *)context->*callback)();
+	  }
+
+	  void FunB2(void (*callback)(void *), void *context) {
+	    printf("I'am ProgramB.FunB2() and be called..\n");
+	    callback(context);
+	  }
+	};
+
+	int main(int argc, char **argv) {
+	  ProgramA PA;
+	  PA.FunA1();
+
+	  ProgramB PB;
+	  PB.FunB1(&ProgramA::FunA2, &PA);  // 此处都要加&
+
+	  printf("\n");
+	  PB.FunB2(ProgramA::FunA2Wrapper, &PA);
+	}
+
+
+但是C++其实有自带的转换宏，不需要程序员去这样写方法，太麻烦，而且也没什么含义。
+
+std::funtion和std::bind的使用
+
+std::funtion和std::bind可以登场了。
+
+std::function是一种通用、多态的函数封装。std::function的实例可以对任何可以调用的目标实体进行存储、复制、和调用操作，这些目标实体包括普通函数、Lambda表达式、函数指针、以及其它函数对象等[1]。
+
+std::bind()函数的意义就像它的函数名一样，是用来绑定函数调用的某些参数的[2]。
+
+这里直接上代码，看std::funtion和std::bind如何在回调中使用。
+
+	#include <iostream>
+
+	#include <functional> // fucntion/bind
+
+	class ProgramA {
+	 public:
+	  void FunA1() { printf("I'am ProgramA.FunA1() and be called..\n"); }
+
+	  void FunA2() { printf("I'am ProgramA.FunA2() and be called..\n"); }
+
+	  static void FunA3() { printf("I'am ProgramA.FunA3() and be called..\n"); }
+	};
+
+	class ProgramB {
+	  typedef std::function<void ()> CallbackFun;
+	 public:
+	   void FunB1(CallbackFun callback) {
+	    printf("I'am ProgramB.FunB2() and be called..\n");
+	    callback();
+	  }
+	};
+
+	void normFun() { printf("I'am normFun() and be called..\n"); }
+
+	int main(int argc, char **argv) {
+	  ProgramA PA;
+	  PA.FunA1();
+
+	  printf("\n");
+	  ProgramB PB;
+	  PB.FunB1(normFun);
+	  printf("\n");
+	  PB.FunB1(ProgramA::FunA3);
+	  printf("\n");
+	  PB.FunB1(std::bind(&ProgramA::FunA2, &PA));
+	}
+std::funtion支持直接传入函数地址，或者通过std::bind指定。
+
+简而言之，std::funtion是定义函数类型(输入、输出)，std::bind是绑定特定的函数（具体的要调用的函数）。
+
+相比于wrapper方法，这个方式要更直接、简洁很多。
+	
+
+
 ### Qt 服务端中 设置心跳断连的实例
 
 [Qt实现简易心跳包机制](https://zhuanlan.zhihu.com/p/452352978)
