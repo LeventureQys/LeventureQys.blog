@@ -6,6 +6,92 @@
 
 ## 2022.5.12 
 
+## template 模板
+
+有时候我们可能会写一大堆同名函数，这个时候就需要用到template函数模板
+
+比如我们常用的swap交换两个数字的函数，交换数据的双方可能是int，double,float,string等等，总不能同名函数一直这么写下去吧，所以template应运而生。
+
+例如：
+	void swap(int&a , int& b) {
+	    int temp = a;
+	    a =  b;
+	    b = temp;
+	}
+
+首先我们把函数模板的声明形式摆在这：
+
+	template <class identifier> function_declaration;
+	template <typename identifier> function_declaration;
+
+就比如前面提到的swap函数，我们来给它指定一个模板
+
+	//method.h
+	template<typename T> void swap(T& t1, T& t2);
+
+	#include "method.cpp"
+	
+	template<typename  T> void swap(T& t1, T& t2) {
+	    T tmpT;
+	    tmpT = t1;
+	    t1 = t2;
+	    t2 = tmpT;
+	}
+这样就是一个模板的声明和定义了，那模板该如何进行实例化呢？
+
+范例：
+
+	int num1 = 1, num2 = 2;
+	swap<int>(num1, num2);
+	printf("num1:%d, num2:%d\n", num1, num2); 
+
+尖括号中可以写一些需要返回的数据类型，然后直接向函数中输入已被定义的参数即可。
+
+#### 类模板
+ 
+考虑我们写一个简单的栈的类，这个栈可以支持int类型，long类型，string类型等等，不利用类模板，我们就要写三个以上的stack类，其中代码基本一样，通过类模板，我们可以定义一个简单的栈模板，再根据需要实例化为int栈，long栈，string栈。
+
+	//statck.h
+	template <class T> class Stack {
+	    public:
+		Stack();
+		~Stack();
+		void push(T t);
+		T pop();
+		bool isEmpty();
+	    private:
+		T *m_pT;        
+		int m_maxSize;
+		int m_size;
+	};
+	
+	//stack.cpp
+	template <class  T>  Stack<T>::Stack(){
+	   m_maxSize = 100;      
+	   m_size = 0;
+	   m_pT = new T[m_maxSize];
+	}
+	template <class T>  Stack<T>::~Stack() {
+	   delete [] m_pT ;
+	}
+
+	template <class T> void Stack<T>::push(T t) {
+	    m_size++;
+	    m_pT[m_size - 1] = t;
+
+	}
+	template <class T> T Stack<T>::pop() {
+	    T t = m_pT[m_size - 1];
+	    m_size--;
+	    return t;
+	}
+	template <class T> bool Stack<T>::isEmpty() {
+	    return m_size == 0;
+	}
+
+至于其他的，包括模板参数，模板专门化等，详情看文章[C++模板template用法总结](https://blog.csdn.net/qq_35637562/article/details/55194097)
+
+
 ### C++回调函数概要
 
 
